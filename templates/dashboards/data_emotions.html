@@ -1,0 +1,35 @@
+{% extends "dashboards/dashboards.html" %}
+
+{% block page_content %}
+<div class="page-header">
+    {% block name_dash %}
+        <h1> Data descriptors Dashboards - {{ information['category']|upper }}</h1>
+    {% endblock %}
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3">
+            {% block dash_info %}
+                <h3>Weighted sum of emotion detection</h3>
+                <center>
+                    <h5 style="color:gray">Most of the<br>visitors ({{ information['max_emotions'][0][2] }}%) are<br>
+                    <big><span style="color: #ff0000">{{ information['max_emotions'][0][0][:-5] }}</span></big><br></h5>
+                </center>
+                <p>Smart cameras allow to detect the visitor's emotion when viewing a given advertisement. This is done by determining different impressions and, based on these, the probabilities of their emotion are calculated.</p>
+                <p>The bar graph shows the weighted sum* of the number of impressions of the visitor's emotions. The visitors mostly present the emotions <strong>{{ information['max_emotions'][0][0][:-5] }} ({{ information['max_emotions'][0][2] }} %)</strong>, <strong>{{ information['max_emotions'][1][0][:-5] }} ({{ information['max_emotions'][1][2] }} %)</strong> and <strong>{{ information['max_emotions'][2][0][:-5] }} ({{ information['max_emotions'][2][2] }} %)</strong></p>
+            {% endblock %}
+        </div>
+        <div class="col-lg-8">
+            <div id='pie' class='chart'></div>
+            <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+            <script type='text/javascript'>
+            var graphs = {{ graphJSON|safe }};
+            Plotly.plot('pie',graphs,{});
+            </script>
+            <p><small>*Weight sum refers to the multiplication of the number of impressions made by the smart camera and the probability that the visitor presents the given emotion.</small></p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

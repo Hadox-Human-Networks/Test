@@ -1,0 +1,15 @@
+{% extends "dashboards/dashboards.html" %}
+
+{% block name_dash %}
+    <h1> Analytics Dashboards - {{ information['category']|upper }}</h1>
+{% endblock %}
+
+{% block dash_info %}
+    <h3>Customers using smart cameras </h3>
+    <h4 style="color:red"><center>{{ information['max_customer'] }}</center> </h4>
+    <h5 style="color:black"><center>{{ information['max_value'] }} visitors</center></h5>
+    <h5 style="color:gray"><center>Main customer<br>
+        from {{ information['min_date'] }} to {{ information['max_date'] }}</center></h5>
+    <p>The name of the customers is associated with the smart camera machine (CMS) that is able to count the number of visitors. </p>
+    <p>The pie chart shows the percentage of customers in relation to the number of visitors, with the largest representative being <strong>{{ information['max_customer'] }}</strong> with <strong>{{ information['max_percent'] }} %</strong> within the time period {{ information['min_date'] }} to {{ information['max_date'] }}. </p>
+{% endblock %}

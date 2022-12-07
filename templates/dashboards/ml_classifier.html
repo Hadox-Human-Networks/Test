@@ -1,0 +1,14 @@
+{% extends "dashboards/dashboards.html" %}
+
+{% block name_dash %}
+    <h1> Machine Learning Dashboards - {{ information['category']|upper }}</h1>
+{% endblock %}
+
+{% block dash_info %}
+    <h3>Dependence between emotion data</h3>
+    <p>As part of the analysis of classification models, a correlation* map is made to know the dependence between emotion variables. As an example, we have that visitors who are detected as happy are not related to the emotions of sadness, anger, surprise or neutral. The same applies for the other emotions.</p>
+    <p>When the boxes are painted in blue and orange the dependence will be stronger, while there will be no correlation when it is light yellow.</p>
+{% endblock %}
+{% block additional_info %}
+<small>*Correlation is the linear relationship between two variables. As the value is closer to 1 or -1, the relationship is stronger; when it is closer to 0, the variables are not correlated. The sign indicates a positive or negative relationship.</small>
+{% endblock %}

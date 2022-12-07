@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboards{% endblock %}
+{% block head %}
+    {{ super() }}
+    <style>
+    </style>
+{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+    {% block name_dash %}{% endblock %}
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3">
+            {% block dash_info %}{% endblock %}
+        </div>
+        <div class="col-lg-8">
+            <div id='pie' class='chart'></div>
+            <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+            <script type='text/javascript'>
+            var graphs = {{ graphJSON|safe }};
+            Plotly.plot('pie',graphs,{});
+            </script>
+            {% block additional_info %}{% endblock %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+

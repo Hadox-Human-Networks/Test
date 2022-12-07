@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboards{% endblock %}
+{% block head %}
+    {{ super() }}
+    <style>
+    </style>
+{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+    <h1> Machine Learning Dashboards - {{ information['category']|upper }}</h1>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3">
+            <h3>Dependence between emotion data</h3>
+            <p>As part of the analysis of classification models, a correlation* map is made to know the dependence between emotion variables. As an example, we have that visitors who are detected as happy are not related to the emotions of sadness, anger, surprise or neutral. The same applies for the other emotions.</p>
+            <p>When the boxes are painted in blue and orange the dependence will be stronger, while there will be no correlation when it is light yellow.</p>
+        </div>
+        <div class="col-lg-8">
+            <div id='emotions' class='chart'></div>
+            <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+            <script type='text/javascript'>
+            var graphs1 = {{ graphJSON1|safe }};
+            Plotly.plot('emotions',graphs1,{});
+            </script>
+            <small>*Correlation is the linear relationship between two variables. As the value is closer to 1 or -1, the relationship is stronger; when it is closer to 0, the variables are not correlated. The sign indicates a positive or negative relationship.</small>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-3">
+            <h3>Dependence between age data</h3>
+            <p>The dependence between visitors with different ages detected is shown in the graph on the right. There is no significant correlation between ages, i.e., there is no relationship between an 18 year old visitor being 25, 35, 45, 55 or 65 years old.</p>
+        </div>
+        <div class="col-lg-8">
+            <div id='age' class='chart'></div>
+            <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+            <script type='text/javascript'>
+            var graphs2 = {{ graphJSON2|safe }};
+            Plotly.plot('age',graphs2,{});
+            </script>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-3">
+            <h3>Dependence between sex data</h3>
+            <p>The dependence of the detected sex of visitors by the smart cameras is shown in the graph on the right. By having a perfect correlation of -1, it means that the camera detects either male or female but not both.</p>
+        </div>
+        <div class="col-lg-8">
+            <div id='sex' class='chart'></div>
+            <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+            <script type='text/javascript'>
+            var graphs3 = {{ graphJSON3|safe }};
+            Plotly.plot('sex',graphs3,{});
+            </script>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+

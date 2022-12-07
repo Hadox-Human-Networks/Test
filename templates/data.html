@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboards{% endblock %}
+{% block head %}
+    {{ super() }}
+    <style>
+    </style>
+{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+    <h1>{{ title }} Dashboard - {{ category|upper }}</h1>
+</div>
+
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+<div class="chart" id="bargraph">
+    <script>
+        var graphs = {{ plot|safe }};
+        Plotly.plot('bargraph',graphs,{});
+    </script>
+</div>
+
+<img src="{{ url_for('static', filename=file_name) }}"
+{% endblock %}

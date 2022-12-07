@@ -1,0 +1,13 @@
+{% extends "dashboards/dashboards.html" %}
+
+{% block name_dash %}
+    <h1> Analytics Dashboards - {{ information['category']|upper }} </h1>
+{% endblock %}
+
+{% block dash_info %}
+    <h3><center>Classification of customers by age</center></h3>
+    <h4 style="color:rgb(179, 6, 6)"><center>{{ information['total'] }} visitors</center></h4>
+    <p>The histogram shows the age dispersion of consumers. The intervals are lower limits.</p>
+    <p>We can see an even distribution of consumers' ages.</p>
+{% endblock %}
+

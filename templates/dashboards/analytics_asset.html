@@ -1,0 +1,22 @@
+{% extends "dashboards/dashboards.html" %}
+
+{% block name_dash %}
+    <h1> Analytics Dashboards - {{ information['category']|upper }}</h1>
+{% endblock %}
+
+{% block dash_info %}
+    <h3> Operative System and  Asset Type </h3>
+    <h4 style="color:red"><center>{{ information['max_source'] }}</center> </h4>
+    <h5 style="color:black"><center>{{ information['max_value'] }} records</center></h5>
+    <h5 style="color:gray"><center>Main Operative System<br>
+        from {{ information['min_date'] }} to {{ information['max_date'] }}</center></h5>
+    
+    <h4 style="color:red"><center>{{ information['max_asset'] }}</center> </h4>
+    <h5 style="color:black"><center>{{ information['max_value_asset'] }} records</center></h5>
+    <h5 style="color:gray"><center>Main Asset Type<br>
+        from {{ information['min_date'] }} to {{ information['max_date'] }}</center></h5>
+    <p> Linux has more records for {{ information['Linux_info'] }} and Windows for {{ information['Windows_info'] }}  </p>
+        <!--
+    TODO: ADD VARIABLES IN TEXT
+    -->
+{% endblock %}

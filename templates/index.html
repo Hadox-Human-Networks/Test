@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Emotions App - Home Page{% endblock %}
+{% block head %}
+{{ super() }}
+<style>
+
+</style>
+{% endblock %}
+
+{% block page_content %}
+
+<div class="video-container">
+  <!-- <video id="video" preload muted autoplay loop>
+    <source
+      src="https://media.istockphoto.com/id/1324915760/es/v%C3%ADdeo/fondo-abstracto-de-una-mujer-hermosa-hecha-de-curvas-e-ia.mp4?s=mp4-640x640-is&k=20&c=P0_8uC1Czr1ynrwbEuFEIPv0uW7ibFOR2HRNlLswcXM="
+      type="video/mp4">
+  </video> -->
+  <div class="jumbotron jumbotron-fluid">
+    <h1 class="display-1">Emotions App</h1>
+    <p class="lead"> Everyone deserves to lead a happier, more fulfilling life. That's why we're building Emotions
+      biometrics to provide personalized recommendations and coaching advice that take your unique emotional state
+      into account.</p>
+    <hr class="my-4">
+    <p>Find out how you can understand your costumer emmotions in just 10 minutes!</p>
+    <p class="lead">
+      <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+    </p>
+  </div>
+</div>
+
+<div class="container p-3 mb-2 bg-white text-dark">
+  <div class="row">
+    <h4 class="display-4">Please select the category of the dashboard you want to visualize</h3>
+      <div class="col-sm">
+        {{ wtf.quick_form(form1) }}
+      </div>
+      <div class="col-sm">
+        {{ wtf.quick_form(form2) }}
+      </div>
+      <div class="col-sm">
+        {{ wtf.quick_form(form3) }}
+      </div>
+  </div>
+
+
+  {% endblock %}

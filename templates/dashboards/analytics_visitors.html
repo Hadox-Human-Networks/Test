@@ -1,0 +1,16 @@
+{% extends "dashboards/dashboards.html" %}
+
+{% block name_dash %}
+    <h1> Analytics Dashboards - {{ information['category']|upper }}</h1>
+{% endblock %}
+
+{% block dash_info %}
+    <h3>Visitors using smart cameras by States</h3>
+    <h4 style="color:red"><center>{{ information['max_state'] }}</center></h4>
+    <h5 style="color:black"><center>{{ information['max_value'] }} visitors</center></h5>
+    <h5 style="color:gray"><center>State with the most visitors <br>
+        from {{ information['min_date'] }} to {{ information['max_date'] }}</center></h5>
+    <p>The types of advertising shown to visitors can be image or video. Through intelligent cameras it is possible to detect the type of advertising that captures the visitor's attention.
+    <p>The bar graph shows the number of visitors per Mexican State who spent more than 60 seconds watching the advertising. Also, the graph shows information by type of advertising. </p>
+    <p>The State with the highest number of visitors interested in the suggested advertising is <strong>{{ information['max_state'] }} ({{ information['max_percent']}}%)</strong>.</p>
+{% endblock %}

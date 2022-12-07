@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboards{% endblock %}
+{% block head %}
+    {{ super() }}
+    <style>
+    </style>
+{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+    <h1> Analytics Dashboards - {{ category|upper }}</h1>
+</div>
+
+<html>
+    <div id='chart' class='chart'></div>
+    <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+    <script type='text/javascript'>
+
+    {% for graph in graphJSON %}
+        var graphs = {{graph | safe}};
+        Plotly.plot('chart',graphs,{});
+    {% endfor %}
+    
+    </script>
+</html>
+
+
+
+
+{% endblock %}
